@@ -1,32 +1,49 @@
 <script setup lang='ts'>
+import useTalentStore from '@/state/TalentsStore';
+import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
-const props = defineProps<{
-  pointsTotal: number
+const { id } = defineProps<{
+  id: number
 }>();
+
+const store = useTalentStore();
+const { talents } = storeToRefs(store);
+const { onReady, onNotReady } = store;
+const talent = ref(talents.value.find(x => x.id === id)!);
 
 const pointsCurrent = ref(0);
 
 const onLeftClick = (e: Event) => {
   e.preventDefault();
-  if (pointsCurrent.value < props.pointsTotal) {
+  if (!talent.value.enabled) return;
+
+  if (pointsCurrent.value < talent.value.pointsTotal) {
     pointsCurrent.value++;
+
+    if (pointsCurrent.value === talent.value.pointsTotal) {
+      onReady(talent.value.id);
+    }
   }
 }
 
 const onRightCLick = (e: Event) => {
   e.preventDefault();
+  if (!talent.value.enabled) return;
+
   if (pointsCurrent.value > 0) {
     pointsCurrent.value--;
+    onNotReady(talent.value.id);
   }
 }
 
 </script>
 
 <template>
-  <div class="talent" @click.left="onLeftClick" @click.right="onRightCLick">
+  <div class="talent" @click.left="onLeftClick" @click.right="onRightCLick"
+    v-bind:class="{ disabled: !talent.enabled }">
     <button class="points">
-      {{ pointsCurrent }}/{{ pointsTotal }}
+      {{ pointsCurrent }}/{{ talent.pointsTotal }}
     </button>
   </div>
 </template>
@@ -46,5 +63,9 @@ const onRightCLick = (e: Event) => {
   right: 0;
   background-color: white;
   user-select: none;
+}
+
+.disabled {
+  filter: grayscale(100%);
 }
 </style>
