@@ -1,6 +1,5 @@
 <script setup lang='ts'>
 import useTalentStore from '@/state/TalentsStore';
-import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
 const { id } = defineProps<{
@@ -8,20 +7,17 @@ const { id } = defineProps<{
 }>();
 
 const store = useTalentStore();
-const { talents } = storeToRefs(store);
-const { onReady, onNotReady } = store;
-const talent = ref(talents.value.find(x => x.id === id)!);
-
-const pointsCurrent = ref(0);
+const { getById, onReady, onNotReady, getByDependOn } = store;
+const talent = ref(getById(id));
 
 const onLeftClick = (e: Event) => {
   e.preventDefault();
   if (!talent.value.enabled) return;
 
-  if (pointsCurrent.value < talent.value.pointsTotal) {
-    pointsCurrent.value++;
+  if (talent.value.pointsCurrent < talent.value.pointsTotal) {
+    talent.value.pointsCurrent++;
 
-    if (pointsCurrent.value === talent.value.pointsTotal) {
+    if (talent.value.pointsCurrent === talent.value.pointsTotal) {
       onReady(talent.value.id);
     }
   }
@@ -29,12 +25,23 @@ const onLeftClick = (e: Event) => {
 
 const onRightCLick = (e: Event) => {
   e.preventDefault();
-  if (!talent.value.enabled) return;
+  if (!talent.value.enabled || !canDecrease()) {
+    return;
+  }
 
-  if (pointsCurrent.value > 0) {
-    pointsCurrent.value--;
+  if (talent.value.pointsCurrent > 0) {
+    talent.value.pointsCurrent--;
     onNotReady(talent.value.id);
   }
+}
+
+function canDecrease() {
+  const dependentTicket = getByDependOn(id);
+  if (!dependentTicket) {
+    return true;
+  }
+
+  return dependentTicket.pointsCurrent === 0;
 }
 
 </script>
@@ -43,7 +50,7 @@ const onRightCLick = (e: Event) => {
   <div class="talent" @click.left="onLeftClick" @click.right="onRightCLick"
     v-bind:class="{ disabled: !talent.enabled }">
     <button class="points">
-      {{ pointsCurrent }}/{{ talent.pointsTotal }}
+      {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
     </button>
   </div>
 </template>

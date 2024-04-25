@@ -3,8 +3,8 @@ import { computed, reactive } from 'vue'
 
 let counter = 1
 const defaultState: Talent[] = [
-  { id: counter++, pointsTotal: 5, dependsOn: null, enabled: true },
-  { id: counter++, pointsTotal: 3, dependsOn: 1, enabled: false }
+  { id: counter++, pointsCurrent: 0, pointsTotal: 5, dependsOn: null, enabled: true },
+  { id: counter++, pointsCurrent: 0, pointsTotal: 3, dependsOn: 1, enabled: false }
 ]
 
 const useTalentStore = defineStore('talents', () => {
@@ -12,11 +12,12 @@ const useTalentStore = defineStore('talents', () => {
 
   const getById = computed(() => (id: number) => talents.find((x) => x.id === id)!)
 
+  const getByDependOn = computed(
+    () => (dependsOn: number) => talents.find((x) => x.dependsOn === dependsOn)!
+  )
+
   function onReady(id: number) {
-    console.log(id)
-    console.log(talents)
     talents.filter((x) => x.dependsOn === id).forEach((x) => (x.enabled = true))
-    console.log(talents)
   }
 
   function onNotReady(id: number) {
@@ -26,6 +27,7 @@ const useTalentStore = defineStore('talents', () => {
     talents,
 
     getById,
+    getByDependOn,
 
     onReady,
     onNotReady
@@ -34,6 +36,7 @@ const useTalentStore = defineStore('talents', () => {
 
 export interface Talent {
   id: number
+  pointsCurrent: number
   pointsTotal: number
   dependsOn: number | null
   enabled: boolean
