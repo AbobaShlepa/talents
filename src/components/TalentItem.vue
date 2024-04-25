@@ -47,9 +47,9 @@ function canDecrease() {
 </script>
 
 <template>
-  <div class="talent" @click.left="onLeftClick" @click.right="onRightCLick"
+  <div class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
     v-bind:class="{ disabled: !talent.enabled }">
-    <button class="points">
+    <button class="points border">
       {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
     </button>
   </div>
@@ -74,5 +74,10 @@ function canDecrease() {
 
 .disabled {
   filter: grayscale(100%);
+}
+
+.border {
+  border: 1px solid gray;
+  border-radius: 25%;
 }
 </style>
