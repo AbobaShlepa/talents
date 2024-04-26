@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import TalentItem from './components/TalentItem.vue';
+import TalentRow from './components/TalentRow.vue';
 </script>
 
 <template>
-  <TalentItem :id="1" :points-total="3" :depends-on="null" />
-  <TalentItem :id="2" :points-total="3" :depends-on="1" />
+  <TalentRow :talent-ids="[1, 2]" />
+  <TalentRow :talent-ids="[3, 4]" />
 </template>
 
 <style scoped></style>

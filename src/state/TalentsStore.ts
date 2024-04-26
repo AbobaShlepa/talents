@@ -3,8 +3,10 @@ import { computed, reactive } from 'vue'
 
 let counter = 1
 const defaultState: Talent[] = [
-  { id: counter++, pointsCurrent: 0, pointsTotal: 5, dependsOn: null, enabled: true },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 3, dependsOn: 1, enabled: false }
+  { id: counter++, pointsCurrent: 0, pointsTotal: 1, dependsOn: null, enabled: true },
+  { id: counter++, pointsCurrent: 0, pointsTotal: 2, dependsOn: null, enabled: true },
+  { id: counter++, pointsCurrent: 0, pointsTotal: 3, dependsOn: 1, enabled: true },
+  { id: counter++, pointsCurrent: 0, pointsTotal: 4, dependsOn: 2, enabled: true }
 ]
 
 const useTalentStore = defineStore('talents', () => {
