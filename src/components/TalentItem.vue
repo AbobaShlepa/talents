@@ -35,7 +35,7 @@ const onLeftClick = (e: Event) => {
 
 const onRightCLick = (e: Event) => {
   e.preventDefault();
-  if (talentActive.value || !canDecrease()) {
+  if (!talentActive.value || !canDecrease()) {
     return;
   }
 
