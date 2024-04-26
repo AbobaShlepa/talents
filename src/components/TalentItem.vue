@@ -13,33 +13,35 @@ const { getById, getByParentId } = talentStore;
 const talent = ref(getById(id));
 
 const talentTreeStore = useTalentTreeStore();
-const { getTalentTreeById } = talentTreeStore;
+const { getTalentTreeById, incrementPoints, decrementPoints } = talentTreeStore;
 const talentTree = ref(getTalentTreeById(talentTreeId));
 
 const parentTalent = talent.value.parentTalentId ? getById(talent.value.parentTalentId) : null;
 
-const disabled = computed(() => {
-  return talent.value.pointsInTreeRequired < talentTree.value.points ||
-    (parentTalent && parentTalent.pointsCurrent < parentTalent.pointsTotal)
+const talentActive = computed(() => {
+  return talent.value.pointsInTreeRequired <= talentTree.value.points &&
+    (parentTalent === null || parentTalent.pointsCurrent === parentTalent.pointsTotal);
 })
 
 const onLeftClick = (e: Event) => {
   e.preventDefault();
-  if (disabled.value) return;
+  if (!talentActive.value) return;
 
   if (talent.value.pointsCurrent < talent.value.pointsTotal) {
     talent.value.pointsCurrent++;
+    incrementPoints(talentTreeId);
   }
 }
 
 const onRightCLick = (e: Event) => {
   e.preventDefault();
-  if (disabled.value || !canDecrease()) {
+  if (talentActive.value || !canDecrease()) {
     return;
   }
 
   if (talent.value.pointsCurrent > 0) {
     talent.value.pointsCurrent--;
+    decrementPoints(talentTreeId);
   }
 }
 
@@ -56,7 +58,7 @@ function canDecrease() {
 
 <template>
   <div class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
-    v-bind:class="{ disabled: disabled }">
+    v-bind:class="{ disabled: !talentActive }">
     <button class="points border">
       {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
     </button>
