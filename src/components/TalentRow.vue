@@ -2,13 +2,14 @@
 import TalentItem from './TalentItem.vue';
 
 defineProps<{
-  talentIds: number[]
+  talentIds: number[],
+  talentTreeId: number
 }>();
 </script>
 
 <template>
   <div class="row">
-    <TalentItem v-for="talentId in talentIds" :id="talentId" v-bind:key="talentId" />
+    <TalentItem v-for="talentId in talentIds" :id="talentId" v-bind:key="talentId" :talent-tree-id="talentTreeId" />
   </div>
 </template>
 

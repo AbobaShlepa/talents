@@ -1,54 +1,62 @@
 <script setup lang='ts'>
+import useTalentTreeStore from '@/state/TalentTreeStore';
 import useTalentStore from '@/state/TalentsStore';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
-const { id } = defineProps<{
-  id: number
+const { id, talentTreeId } = defineProps<{
+  id: number,
+  talentTreeId: number,
 }>();
 
-const store = useTalentStore();
-const { getById, onReady, onNotReady, getByDependOn } = store;
+const talentStore = useTalentStore();
+const { getById, getByParentId } = talentStore;
 const talent = ref(getById(id));
+
+const talentTreeStore = useTalentTreeStore();
+const { getTalentTreeById } = talentTreeStore;
+const talentTree = ref(getTalentTreeById(talentTreeId));
+
+const parentTalent = talent.value.parentTalentId ? getById(talent.value.parentTalentId) : null;
+
+const disabled = computed(() => {
+  return talent.value.pointsInTreeRequired < talentTree.value.points ||
+    (parentTalent && parentTalent.pointsCurrent < parentTalent.pointsTotal)
+})
 
 const onLeftClick = (e: Event) => {
   e.preventDefault();
-  if (!talent.value.enabled) return;
+  if (disabled.value) return;
 
   if (talent.value.pointsCurrent < talent.value.pointsTotal) {
     talent.value.pointsCurrent++;
-
-    if (talent.value.pointsCurrent === talent.value.pointsTotal) {
-      onReady(talent.value.id);
-    }
   }
 }
 
 const onRightCLick = (e: Event) => {
   e.preventDefault();
-  if (!talent.value.enabled || !canDecrease()) {
+  if (disabled.value || !canDecrease()) {
     return;
   }
 
   if (talent.value.pointsCurrent > 0) {
     talent.value.pointsCurrent--;
-    onNotReady(talent.value.id);
   }
 }
 
 function canDecrease() {
-  const dependentTicket = getByDependOn(id);
-  if (!dependentTicket) {
+  const childTalent = getByParentId(id);
+  if (!childTalent) {
     return true;
   }
 
-  return dependentTicket.pointsCurrent === 0;
+  return childTalent.pointsCurrent === 0;
 }
 
 </script>
 
 <template>
   <div class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
-    v-bind:class="{ disabled: !talent.enabled }">
+    v-bind:class="{ disabled: disabled }">
     <button class="points border">
       {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
     </button>

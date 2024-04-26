@@ -1,47 +1,50 @@
 import { defineStore } from 'pinia'
-import { computed, reactive } from 'vue'
+import { computed, ref } from 'vue'
 
 let counter = 1
-const defaultState: Talent[] = [
-  { id: counter++, pointsCurrent: 0, pointsTotal: 1, dependsOn: null, enabled: true },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 2, dependsOn: null, enabled: true },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 3, dependsOn: 1, enabled: true },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 4, dependsOn: 2, enabled: true }
+const defaultState: ITalent[] = [
+  {
+    id: counter++,
+    pointsCurrent: 0,
+    pointsTotal: 3,
+    parentTalentId: null,
+    pointsInTreeRequired: 0
+  },
+  {
+    id: counter++,
+    pointsCurrent: 0,
+    pointsTotal: 2,
+    parentTalentId: null,
+    pointsInTreeRequired: 0
+  },
+  { id: counter++, pointsCurrent: 0, pointsTotal: 3, parentTalentId: 1, pointsInTreeRequired: 5 },
+  { id: counter++, pointsCurrent: 0, pointsTotal: 4, parentTalentId: 2, pointsInTreeRequired: 5 }
 ]
 
 const useTalentStore = defineStore('talents', () => {
-  const talents = reactive<Talent[]>(defaultState)
+  const talents = ref<ITalent[]>(defaultState)
 
-  const getById = computed(() => (id: number) => talents.find((x) => x.id === id)!)
+  const getById = computed(() => (id: number) => talents.value.find((x) => x.id === id)!)
 
-  const getByDependOn = computed(
-    () => (dependsOn: number) => talents.find((x) => x.dependsOn === dependsOn)!
+  const getByParentId = computed(
+    () => (parentTalentId: number) =>
+      talents.value.find((x) => x.parentTalentId === parentTalentId)!
   )
 
-  function onReady(id: number) {
-    talents.filter((x) => x.dependsOn === id).forEach((x) => (x.enabled = true))
-  }
-
-  function onNotReady(id: number) {
-    talents.filter((x) => x.dependsOn === id).forEach((x) => (x.enabled = false))
-  }
   return {
     talents,
 
     getById,
-    getByDependOn,
-
-    onReady,
-    onNotReady
+    getByParentId
   }
 })
 
-export interface Talent {
+export interface ITalent {
   id: number
   pointsCurrent: number
   pointsTotal: number
-  dependsOn: number | null
-  enabled: boolean
+  parentTalentId: number | null
+  pointsInTreeRequired: number
 }
 
 export default useTalentStore

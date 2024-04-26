@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import TalentRow from './components/TalentRow.vue';
+import TalentTree from './components/TalentTree.vue';
 </script>
 
 <template>
-  <TalentRow :talent-ids="[1, 2]" />
-  <TalentRow :talent-ids="[3, 4]" />
+  <TalentTree :id="1" />
 </template>
 
 <style scoped></style>
