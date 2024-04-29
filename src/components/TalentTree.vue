@@ -26,9 +26,7 @@ onMounted(() => {
       {{ talentTree.points }}
     </div>
     <div class="row-container">
-      <TalentRow :talent-ids="[1, 2]" />
-      <TalentRow :talent-ids="[3, 4]" />
-      <TalentRow :talent-ids="[5, 6]" />
+      <TalentRow :talent-ids="[1, 2, 3]" />
     </div>
   </div>
 </template>

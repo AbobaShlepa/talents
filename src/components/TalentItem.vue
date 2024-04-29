@@ -1,11 +1,14 @@
 <script setup lang='ts'>
 import useTalentTreeStore from '@/state/TalentTreeStore';
 import useTalentStore from '@/state/TalentsStore';
-import { computed, inject, ref } from 'vue';
+import { computed, inject, provide, ref } from 'vue';
+import TalentTooltip from './TalentTooltipContainer.vue';
 
 const { id } = defineProps<{
   id: number,
 }>();
+
+provide('talentId', id);
 
 const talentStore = useTalentStore();
 const { getById, getByParentId } = talentStore;
@@ -57,12 +60,16 @@ function canDecrease() {
 </script>
 
 <template>
-  <div :id="`talent_${id}`" class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
-    v-bind:class="{ disabled: !talentActive }">
-    <button class="points border">
-      {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
-    </button>
-  </div>
+  <TalentTooltip>
+    <template #content>
+      <div :id="`talent_${id}`" class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
+        v-bind:class="{ disabled: !talentActive }">
+        <button class="points border">
+          {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
+        </button>
+      </div>
+    </template>
+  </TalentTooltip>
 </template>
 
 <style scoped>

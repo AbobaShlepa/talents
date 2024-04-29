@@ -17,10 +17,13 @@ const defaultState: ITalent[] = [
     parentTalentId: null,
     pointsInTreeRequired: 0
   },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 3, parentTalentId: 1, pointsInTreeRequired: 5 },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 4, parentTalentId: 2, pointsInTreeRequired: 5 },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 3, parentTalentId: 3, pointsInTreeRequired: 5 },
-  { id: counter++, pointsCurrent: 0, pointsTotal: 3, parentTalentId: 4, pointsInTreeRequired: 5 }
+  {
+    id: counter++,
+    pointsCurrent: 0,
+    pointsTotal: 5,
+    parentTalentId: null,
+    pointsInTreeRequired: 0
+  }
 ]
 
 const useTalentStore = defineStore('talents', () => {
