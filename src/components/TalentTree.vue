@@ -1,13 +1,19 @@
 <script setup lang='ts'>
 import useTalentTreeStore from '@/state/TalentTreeStore';
 import TalentRow from './TalentRow.vue';
-import { provide, ref } from 'vue';
+import { onMounted, provide, ref } from 'vue';
+import drawLines from '@/helpers/arrow';
+
 const { id } = defineProps<{
   id: number
 }>();
 const { getTalentTreeById } = useTalentTreeStore();
 const talentTree = ref(getTalentTreeById(id));
 provide('talentTreeId', id);
+
+onMounted(() => {
+  drawLines([1, 2, 3, 4, 5, 6])
+});
 
 </script>
 

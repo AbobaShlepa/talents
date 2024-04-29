@@ -57,7 +57,7 @@ function canDecrease() {
 </script>
 
 <template>
-  <div class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
+  <div :id="`talent_${id}`" class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
     v-bind:class="{ disabled: !talentActive }">
     <button class="points border">
       {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
