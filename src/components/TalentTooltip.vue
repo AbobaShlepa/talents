@@ -49,6 +49,7 @@ const formatString = (template: string, ...args: any[]) => {
   border: 2px solid #AAA;
   border-radius: 10%;
   padding: 10px;
+  user-select: none;
 }
 
 .talent-name,

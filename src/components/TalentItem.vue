@@ -63,7 +63,12 @@ function canDecrease() {
   <TalentTooltip>
     <template #content>
       <div :id="`talent_${id}`" class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
-        v-bind:class="{ disabled: !talentActive }">
+        v-bind:class="{
+          disabled: !talentActive,
+          available: talent.pointsCurrent === 0,
+          started: talent.pointsCurrent > 0 && talent.pointsCurrent < talent.pointsTotal,
+          completed: talent.pointsCurrent === talent.pointsTotal,
+        }">
         <button class="points border">
           {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
         </button>
@@ -94,7 +99,18 @@ function canDecrease() {
 }
 
 .border {
-  border: 1px solid gray;
   border-radius: 25%;
+}
+
+.available {
+  border: 1px solid #209e00;
+}
+
+.started {
+  border: 1px solid gold;
+}
+
+.completed {
+  border: 1px solid black;
 }
 </style>
