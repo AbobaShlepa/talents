@@ -1,12 +1,13 @@
 <script setup lang='ts'>
 import useTalentTreeStore from '@/state/TalentTreeStore';
 import TalentRow from './TalentRow.vue';
-import { ref } from 'vue';
+import { provide, ref } from 'vue';
 const { id } = defineProps<{
   id: number
 }>();
 const { getTalentTreeById } = useTalentTreeStore();
 const talentTree = ref(getTalentTreeById(id));
+provide('talentTreeId', id);
 
 </script>
 
@@ -19,9 +20,9 @@ const talentTree = ref(getTalentTreeById(id));
       {{ talentTree.points }}
     </div>
     <div class="row-container">
-      <TalentRow :talent-ids="[1, 2]" :talent-tree-id="id" />
-      <TalentRow :talent-ids="[3, 4]" :talent-tree-id="id" />
-      <TalentRow :talent-ids="[5, 6]" :talent-tree-id="id" />
+      <TalentRow :talent-ids="[1, 2]" />
+      <TalentRow :talent-ids="[3, 4]" />
+      <TalentRow :talent-ids="[5, 6]" />
     </div>
   </div>
 </template>

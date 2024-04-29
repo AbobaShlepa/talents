@@ -1,16 +1,16 @@
 <script setup lang='ts'>
 import useTalentTreeStore from '@/state/TalentTreeStore';
 import useTalentStore from '@/state/TalentsStore';
-import { computed, ref } from 'vue';
+import { computed, inject, ref } from 'vue';
 
-const { id, talentTreeId } = defineProps<{
+const { id } = defineProps<{
   id: number,
-  talentTreeId: number,
 }>();
 
 const talentStore = useTalentStore();
 const { getById, getByParentId } = talentStore;
 const talent = ref(getById(id));
+const talentTreeId = inject<number>('talentTreeId')!;
 
 const talentTreeStore = useTalentTreeStore();
 const { getTalentTreeById, incrementPoints, decrementPoints } = talentTreeStore;
