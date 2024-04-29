@@ -34,7 +34,7 @@ onMounted(() => {
 <style scoped>
 .tree {
   border: 1px solid black;
-  width: 310px;
+  width: 330px;
   height: fit-content;
   border-radius: 25px;
   background-color: azure;
