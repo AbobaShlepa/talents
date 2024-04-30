@@ -69,6 +69,7 @@ function canDecrease() {
           started: talent.pointsCurrent > 0 && talent.pointsCurrent < talent.pointsTotal,
           completed: talent.pointsCurrent === talent.pointsTotal,
         }">
+        <img class="talent-icon" v-bind:src="talent.imageUrl" />
         <button class="points border">
           {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
         </button>
@@ -83,6 +84,12 @@ function canDecrease() {
   height: 70px;
   background-color: red;
   position: relative;
+}
+
+.talent-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 25%;
 }
 
 .points {
@@ -103,14 +110,14 @@ function canDecrease() {
 }
 
 .available {
-  border: 1px solid #209e00;
+  border: 2px solid #209e00;
 }
 
 .started {
-  border: 1px solid gold;
+  border: 2px solid gold;
 }
 
 .completed {
-  border: 1px solid black;
+  border: 2px solid black;
 }
 </style>
