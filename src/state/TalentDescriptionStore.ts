@@ -24,7 +24,14 @@ const defaultTalents: ITalentDescription[] = [
     requires: null,
     descriptionTemplate: 'Increases your Dodge chance by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]]
-  }
+  },
+  {
+    id: counter++,
+    name: 'Precision',
+    requires: null,
+    descriptionTemplate: 'Increases your change to hit with melee weapons by {0}%.',
+    rankValues: [[1], [2], [3], [4], [5]]
+  },
 ]
 
 const useTalentDescriptionStore = defineStore('talentDescription', () => {

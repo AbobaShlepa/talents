@@ -9,7 +9,7 @@ const defaultState: ITalent[] = [
     pointsTotal: 3,
     parentTalentId: null,
     pointsInTreeRequired: 0,
-    imageUrl: '',
+    imageUrl: 'https://classicdb.ch/images/icons/medium/ability_gouge.jpg',
   },
   {
     id: counter++,
@@ -17,7 +17,7 @@ const defaultState: ITalent[] = [
     pointsTotal: 2,
     parentTalentId: null,
     pointsInTreeRequired: 0,
-    imageUrl: '',
+    imageUrl: 'https://classicdb.ch/images/icons/medium/spell_shadow_ritualofsacrifice.jpg',
   },
   {
     id: counter++,
@@ -25,7 +25,15 @@ const defaultState: ITalent[] = [
     pointsTotal: 5,
     parentTalentId: null,
     pointsInTreeRequired: 0,
-    imageUrl: '',
+    imageUrl: 'https://classicdb.ch/images/icons/medium/spell_nature_invisibilty.jpg',
+  },
+  {
+    id: counter++,
+    pointsCurrent: 0,
+    pointsTotal: 5,
+    parentTalentId: null,
+    pointsInTreeRequired: 5,
+    imageUrl: 'https://classicdb.ch/images/icons/medium/ability_marksmanship.jpg',
   },
 ];
 
