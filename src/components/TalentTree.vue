@@ -27,6 +27,7 @@ onMounted(() => {
     </div>
     <div class="row-container">
       <TalentRow :talent-ids="[1, 2, 3]" />
+      <TalentRow :talent-ids="[4]" />
     </div>
   </div>
 </template>
@@ -34,7 +35,7 @@ onMounted(() => {
 <style scoped>
 .tree {
   border: 1px solid black;
-  width: 330px;
+  width: fit-content;
   height: fit-content;
   border-radius: 25px;
   background-color: azure;

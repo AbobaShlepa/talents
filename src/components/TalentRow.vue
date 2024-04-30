@@ -17,7 +17,7 @@ defineProps<{
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
-  width: 330px;
+  width: 250px;
   justify-content: space-evenly;
 }
 </style>

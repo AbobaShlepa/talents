@@ -66,8 +66,7 @@ function canDecrease() {
         v-bind:class="{
           disabled: !talentActive,
           available: talent.pointsCurrent === 0,
-          started: talent.pointsCurrent > 0 && talent.pointsCurrent < talent.pointsTotal,
-          completed: talent.pointsCurrent === talent.pointsTotal,
+          started: talent.pointsCurrent > 0
         }">
         <img class="talent-icon" v-bind:src="talent.imageUrl" />
         <button class="points border">
@@ -80,15 +79,15 @@ function canDecrease() {
 
 <style scoped>
 .talent {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   background-color: red;
   position: relative;
 }
 
 .talent-icon {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 25%;
 }
 
@@ -115,9 +114,5 @@ function canDecrease() {
 
 .started {
   border: 2px solid gold;
-}
-
-.completed {
-  border: 2px solid black;
 }
 </style>
