@@ -1,14 +1,12 @@
 <script setup lang='ts'>
-import useTalentDescriptionStore from '@/state/TalentDescriptionStore';
 import useTalentStore from '@/state/TalentsStore';
 import { inject, ref } from 'vue';
 
 const id = inject<number>('talentId')!;
 
-const { getTalentDescriptionById } = useTalentDescriptionStore();
 const { getById } = useTalentStore();
 const talent = ref(getById(id));
-const { name, requires, descriptionTemplate, rankValues } = getTalentDescriptionById(id);
+const { name, requires, descriptionTemplate, rankValues } = getById(id);
 
 function getDescription(points: number) {
   if (rankValues.length === 1) {
