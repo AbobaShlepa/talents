@@ -10,6 +10,8 @@ const defaultState: ITalent[] = [
     parentTalentId: null,
     pointsInTreeRequired: 0,
     imageUrl: 'https://classicdb.ch/images/icons/medium/ability_gouge.jpg',
+    talentRow: 1,
+    talentTree: 1,
   },
   {
     id: counter++,
@@ -18,6 +20,8 @@ const defaultState: ITalent[] = [
     parentTalentId: null,
     pointsInTreeRequired: 0,
     imageUrl: 'https://classicdb.ch/images/icons/medium/spell_shadow_ritualofsacrifice.jpg',
+    talentRow: 1,
+    talentTree: 1,
   },
   {
     id: counter++,
@@ -26,6 +30,8 @@ const defaultState: ITalent[] = [
     parentTalentId: null,
     pointsInTreeRequired: 0,
     imageUrl: 'https://classicdb.ch/images/icons/medium/spell_nature_invisibilty.jpg',
+    talentRow: 1,
+    talentTree: 1,
   },
   {
     id: counter++,
@@ -34,6 +40,8 @@ const defaultState: ITalent[] = [
     parentTalentId: null,
     pointsInTreeRequired: 5,
     imageUrl: 'https://classicdb.ch/images/icons/medium/ability_marksmanship.jpg',
+    talentRow: 2,
+    talentTree: 1,
   },
 ];
 
@@ -61,6 +69,8 @@ export interface ITalent {
   parentTalentId: number | null;
   pointsInTreeRequired: number;
   imageUrl: string;
+  talentRow: number;
+  talentTree: number;
 }
 
 export default useTalentStore;

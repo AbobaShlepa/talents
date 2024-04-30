@@ -3,6 +3,8 @@ import useTalentTreeStore from '@/state/TalentTreeStore';
 import TalentRow from './TalentRow.vue';
 import { onMounted, provide, ref } from 'vue';
 import drawLines from '@/helpers/arrow';
+import useTalentStore from '@/state/TalentsStore';
+import Enumerable from 'linq';
 
 const { id } = defineProps<{
   id: number
@@ -11,8 +13,19 @@ const { getTalentTreeById } = useTalentTreeStore();
 const talentTree = ref(getTalentTreeById(id));
 provide('talentTreeId', id);
 
+const talentStore = useTalentStore();
+const talents = talentStore.talents.filter(x => x.talentTree === id);
+const talentRowsGrouped = Enumerable.from(talents).groupBy(x => x.talentRow).toDictionary(x => x.key());
+const rows = talentRowsGrouped.toEnumerable().select(x => x.key).toArray();
+
+const getTalents = (row: number) => {
+  return talentRowsGrouped.get(row).select(x => x.id).toArray();
+}
+const talentIds = talents.map(x => x.id);
+
+
 onMounted(() => {
-  drawLines([1, 2, 3, 4, 5, 6])
+  drawLines(talentIds);
 });
 
 </script>
@@ -26,8 +39,7 @@ onMounted(() => {
       {{ talentTree.points }}
     </div>
     <div class="row-container">
-      <TalentRow :talent-ids="[1, 2, 3]" />
-      <TalentRow :talent-ids="[4]" />
+      <TalentRow v-for="row in rows" v-bind:key="row" :talent-ids="getTalents(+row)" />
     </div>
   </div>
 </template>

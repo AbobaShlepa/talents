@@ -1,24 +1,24 @@
-import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { defineStore } from 'pinia';
+import { computed, ref } from 'vue';
 
-let counter = 1
-const defaultTalentTrees: ITalentTree[] = [{ id: counter++, name: 'Combat', points: 0 }]
+let counter = 1;
+const defaultTalentTrees: ITalentTree[] = [{ id: counter++, name: 'Combat', points: 0 }];
 
 const useTalentTreeStore = defineStore('talentRow', () => {
-  const talentTrees = ref(defaultTalentTrees)
+  const talentTrees = ref(defaultTalentTrees);
 
   const getTalentTreeById = computed(
-    () => (id: number) => talentTrees.value.find((x) => x.id === id)!
-  )
+    () => (id: number) => talentTrees.value.find(x => x.id === id)!
+  );
 
   function incrementPoints(talentTreeId: number) {
-    const talentTree = talentTrees.value.find((x) => x.id === talentTreeId)!
-    talentTree.points++
+    const talentTree = talentTrees.value.find(x => x.id === talentTreeId)!;
+    talentTree.points++;
   }
 
   function decrementPoints(talentTreeId: number) {
-    const talentTree = talentTrees.value.find((x) => x.id === talentTreeId)!
-    talentTree.points--
+    const talentTree = talentTrees.value.find(x => x.id === talentTreeId)!;
+    talentTree.points--;
   }
 
   return {
@@ -27,14 +27,14 @@ const useTalentTreeStore = defineStore('talentRow', () => {
     incrementPoints,
     decrementPoints,
 
-    getTalentTreeById
-  }
-})
+    getTalentTreeById,
+  };
+});
 
 export interface ITalentTree {
-  id: number
-  name: string
-  points: number
+  id: number;
+  name: string;
+  points: number;
 }
 
-export default useTalentTreeStore
+export default useTalentTreeStore;
