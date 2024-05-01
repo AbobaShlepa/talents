@@ -121,7 +121,7 @@ const defaultState: ITalent[] = [
     imageUrl: 'https://classicdb.ch/images/icons/medium/ability_rogue_sprint.jpg',
     talentRow: 3,
     talentTree: 1,
-		name: 'Riposte',
+		name: 'Improved sprint',
     requires: null,
     descriptionTemplate: "Gives a {0}% chance to remove all movement impairing effects when you active your Sprint ability.",
     rankValues: [[50], [100]]

@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import useTalentStore from '@/state/TalentsStore';
 import { inject, ref } from 'vue';
+import TalentRequires from './TalentRequires.vue';
 
 const id = inject<number>('talentId')!;
 
@@ -23,13 +24,14 @@ const formatString = (template: string, ...args: any[]) => {
     return typeof args[index] === 'undefined' ? match : args[index];
   });
 }
+
 </script>
 
 <template>
   <div class="main">
     <div class="talent-name">{{ name }}</div>
     <div class="rank">Rank {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}</div>
-    <div class="requires" v-if="requires"> {{ requires }}</div>
+    <TalentRequires :id="id" />
     <div class="description">{{ getDescription(talent.pointsCurrent) }}</div>
     <div class="rank" v-if="talent.pointsCurrent !== 0 && talent.pointsCurrent !== talent.pointsTotal">
       <br />
@@ -43,7 +45,7 @@ const formatString = (template: string, ...args: any[]) => {
 
 <style scoped>
 .main {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   border: 2px solid #AAA;
   border-radius: 10%;
   padding: 10px;
@@ -51,8 +53,7 @@ const formatString = (template: string, ...args: any[]) => {
 }
 
 .talent-name,
-.rank,
-.requires {
+.rank{
   color: #FFF;
 }
 
