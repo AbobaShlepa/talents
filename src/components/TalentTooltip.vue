@@ -7,7 +7,7 @@ const id = inject<number>('talentId')!;
 
 const { getById } = useTalentStore();
 const talent = ref(getById(id));
-const { name, requires, descriptionTemplate, rankValues } = getById(id);
+const { name, descriptionTemplate, rankValues } = getById(id);
 
 function getDescription(points: number) {
   if (rankValues.length === 1) {

@@ -9,7 +9,7 @@ const { id} = defineProps<{
 const store = useTalentStore();
 const treeStore = useTalentTreeStore();
 
-const {talentRow, talentTree, parentTalentId } = store.getById(id);
+const {talentRow, talentTree, parentTalentName } = store.getById(id);
 const tree = treeStore.getTalentTreeById(talentTree);
 
 function getRequires() {
@@ -18,14 +18,14 @@ function getRequires() {
   }
 
   const result = [];
-  const pointsInTreeRequired = talentRow * 5;
+  const pointsInTreeRequired = talentRow * 5 - 5;
 	if (tree.points < pointsInTreeRequired) {
 		result.push(`Requires ${pointsInTreeRequired} points in ${tree.name} talents`);
 	}
 
-	if (parentTalentId) {
-		const { name, pointsTotal } = store.getById(parentTalentId);
-		result.push(`Requires ${pointsTotal} in ${name}`)
+	if (parentTalentName) {
+		const { name, pointsTotal } = store.getByName(parentTalentName);
+		result.push(`Requires ${pointsTotal} points in ${name}`)
 	}
 
 	return result;

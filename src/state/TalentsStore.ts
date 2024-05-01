@@ -7,15 +7,19 @@ const useTalentStore = defineStore('talents', () => {
 
   const getById = computed(() => (id: number) => talents.value.find(x => x.id === id)!);
 
-  const getByParentId = computed(
-    () => (parentTalentId: number) => talents.value.find(x => x.parentTalentId === parentTalentId)!
+  const getByName = computed(
+    () => (talentName: string) => talents.value.find(x => x.name === talentName)!
   );
+
+  const getChildByName = computed(
+    () => (talentName: string) => talents.value.find(x => x.parentTalentName === talentName));
 
   return {
     talents,
 
     getById,
-    getByParentId,
+    getByName,
+    getChildByName,
   };
 });
 
