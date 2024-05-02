@@ -11,21 +11,8 @@ const useTalentTreeStore = defineStore('talentRow', () => {
     () => (id: number) => talentTrees.value.find(x => x.id === id)!
   );
 
-  function incrementPoints(talentTreeId: number) {
-    const talentTree = talentTrees.value.find(x => x.id === talentTreeId)!;
-    talentTree.points++;
-  }
-
-  function decrementPoints(talentTreeId: number) {
-    const talentTree = talentTrees.value.find(x => x.id === talentTreeId)!;
-    talentTree.points--;
-  }
-
   return {
     talentTrees,
-
-    incrementPoints,
-    decrementPoints,
 
     getTalentTreeById,
   };

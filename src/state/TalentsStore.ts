@@ -18,12 +18,30 @@ const useTalentStore = defineStore('talents', () => {
     return filteredTalents.every(x => x.pointsCurrent === 0);
   });
 
+  const getPointsInTree = computed(() => (talentTree: number) => {
+    return talents.value
+      .filter(x => x.talentTree === talentTree)
+      .map(x => x.pointsCurrent)
+      .reduce((sum, current) => (sum += current));
+  });
+
+  function resetTree(talentTree: number) {
+    talents.value
+      .filter(x => x.talentTree === talentTree)
+      .forEach(x => {
+        x.pointsCurrent = 0;
+      });
+  }
+
   return {
     talents,
+
+    resetTree,
 
     getById,
     getByName,
     canDecrease,
+    getPointsInTree,
   };
 });
 

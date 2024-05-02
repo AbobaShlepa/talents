@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-import useTalentTreeStore from '@/state/TalentTreeStore';
 import useTalentStore from '@/state/TalentsStore';
 import { computed, inject, provide, ref } from 'vue';
 import TalentTooltip from './TalentTooltipContainer.vue';
@@ -11,19 +10,15 @@ const { id } = defineProps<{
 provide('talentId', id);
 
 const talentStore = useTalentStore();
-const { getById, getByName, canDecrease } = talentStore;
+const { getById, getByName, canDecrease, getPointsInTree } = talentStore;
 const talent = ref(getById(id));
 const talentTreeId = inject<number>('talentTreeId')!;
-
-const talentTreeStore = useTalentTreeStore();
-const { getTalentTreeById, incrementPoints, decrementPoints } = talentTreeStore;
-const talentTree = ref(getTalentTreeById(talentTreeId));
 
 const parentTalent = talent.value.parentTalentName ? getByName(talent.value.parentTalentName) : null;
 
 const talentActive = computed(() => {
   const pointsInTreeRequired = talent.value.talentRow * 5 - 5;
-  return pointsInTreeRequired <= talentTree.value.points &&
+  return pointsInTreeRequired <= getPointsInTree(talentTreeId) &&
     (parentTalent === null || parentTalent.pointsCurrent === parentTalent.pointsTotal);
 })
 
@@ -33,7 +28,6 @@ const onLeftClick = (e: Event) => {
 
   if (talent.value.pointsCurrent < talent.value.pointsTotal) {
     talent.value.pointsCurrent++;
-    incrementPoints(talentTreeId);
   }
 }
 
@@ -45,7 +39,6 @@ const onRightCLick = (e: Event) => {
 
   if (talent.value.pointsCurrent > 0) {
     talent.value.pointsCurrent--;
-    decrementPoints(talentTreeId);
   }
 }
 

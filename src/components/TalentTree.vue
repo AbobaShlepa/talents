@@ -36,11 +36,14 @@ onMounted(() => {
       {{ talentTree.name }}
     </div>
     <div class="points-container">
-      {{ talentTree.points }}
+      {{ talentStore.getPointsInTree(id) }}
     </div>
     <div class="row-container">
       <TalentRow v-for="row in rows" v-bind:key="row" :talent-ids="getTalents(+row)" />
     </div>
+    <button class="reset" @click="() => talentStore.resetTree(id)">
+      X
+    </button>
   </div>
 </template>
 
@@ -53,6 +56,7 @@ onMounted(() => {
   background-color: azure;
   padding: 20px;
   position: relative;
+  user-select: none;
 }
 
 .row-container {
@@ -75,6 +79,12 @@ onMounted(() => {
   position: absolute;
   top: 10px;
   right: 10px;
-  user-select: none;
+}
+
+.reset {
+  bottom: 10px;
+  right: 10px;
+  color: red;
+  position: absolute;
 }
 </style>
