@@ -11,7 +11,7 @@ const { id } = defineProps<{
 provide('talentId', id);
 
 const talentStore = useTalentStore();
-const { getById, getByName, getChildByName } = talentStore;
+const { getById, getByName, canDecrease } = talentStore;
 const talent = ref(getById(id));
 const talentTreeId = inject<number>('talentTreeId')!;
 
@@ -39,7 +39,7 @@ const onLeftClick = (e: Event) => {
 
 const onRightCLick = (e: Event) => {
   e.preventDefault();
-  if (!talentActive.value || !canDecrease()) {
+  if (!talentActive.value || !canDecrease(talent.value.talentRow, talent.value.talentTree)) {
     return;
   }
 
@@ -47,15 +47,6 @@ const onRightCLick = (e: Event) => {
     talent.value.pointsCurrent--;
     decrementPoints(talentTreeId);
   }
-}
-
-function canDecrease() {
-  const childTalent = getChildByName(talent.value.name);
-  if (!childTalent) {
-    return true;
-  }
-
-  return childTalent.pointsCurrent === 0;
 }
 
 </script>

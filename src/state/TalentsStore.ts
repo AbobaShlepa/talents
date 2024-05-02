@@ -11,15 +11,19 @@ const useTalentStore = defineStore('talents', () => {
     () => (talentName: string) => talents.value.find(x => x.name === talentName)!
   );
 
-  const getChildByName = computed(
-    () => (talentName: string) => talents.value.find(x => x.parentTalentName === talentName));
+  const canDecrease = computed(() => (talentRow: number, talentTree: number) => {
+    const filteredTalents = talents.value.filter(
+      x => x.talentTree === talentTree && x.talentRow > talentRow
+    );
+    return filteredTalents.every(x => x.pointsCurrent === 0);
+  });
 
   return {
     talents,
 
     getById,
     getByName,
-    getChildByName,
+    canDecrease,
   };
 });
 
