@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import useTalentTreeStore from '@/state/TalentTreeStore';
 import useTalentStore from '@/state/TalentsStore';
+import { ref } from 'vue';
 
-const { id} = defineProps<{
+const { id } = defineProps<{
 	id: number
 }>();
 
 const store = useTalentStore();
-const treeStore = useTalentTreeStore();
 
-const {talentRow, talentTree, parentTalentName } = store.getById(id);
-const tree = treeStore.getTalentTreeById(talentTree);
+const { talentRow, talentTree, parentTalentName } = store.getById(id);
+const tree = store.getTalentTree(talentTree);
+const pointsInTree = ref(store.getPointsInTree(talentTree));
 
 function getRequires() {
-  if (talentRow === 1) {
-    return null;
-  }
+	if (talentRow === 1) {
+		return null;
+	}
 
-  const result = [];
-  const pointsInTreeRequired = talentRow * 5 - 5;
-	if (tree.points < pointsInTreeRequired) {
+	const result = [];
+	const pointsInTreeRequired = talentRow * 5 - 5;
+	if (pointsInTree.value < pointsInTreeRequired) {
 		result.push(`Requires ${pointsInTreeRequired} points in ${tree.name} talents`);
 	}
 
@@ -37,7 +37,7 @@ function getRequires() {
 	<div class="requires">
 		<div v-for="value in getRequires()" :key="value">
 			{{ value }}
-			</div>
+		</div>
 	</div>
 </template>
 
@@ -45,4 +45,4 @@ function getRequires() {
 .requires {
 	color: #b20715;
 }
-</style>	
+</style>

@@ -25,7 +25,7 @@ const useTalentStore = defineStore('talents', () => {
     return talents.value
       .filter(x => x.talentTree === talentTree)
       .map(x => x.pointsCurrent)
-      .reduce((sum, current) => (sum += current));
+      .reduce((sum, current) => (sum += current), 0);
   });
 
   function resetTree(talentTree: number) {

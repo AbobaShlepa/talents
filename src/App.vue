@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TalentTree from './components/TalentTree.vue';
+import ClassTalents from './components/ClassTalents.vue';
 </script>
 
 <template>
-  <TalentTree :id="1" />
+  <ClassTalents :tree-ids="[1, 2, 3]" />
 </template>
 
 <style scoped></style>

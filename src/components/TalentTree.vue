@@ -1,7 +1,6 @@
 <script setup lang='ts'>
-import useTalentTreeStore from '@/state/TalentTreeStore';
 import TalentRow from './TalentRow.vue';
-import { onMounted, provide, ref } from 'vue';
+import { onMounted, provide } from 'vue';
 import drawLines from '@/helpers/arrow';
 import useTalentStore from '@/state/TalentsStore';
 import Enumerable from 'linq';
@@ -9,14 +8,14 @@ import Enumerable from 'linq';
 const { id } = defineProps<{
   id: number
 }>();
-const { getTalentTreeById } = useTalentTreeStore();
-const talentTree = ref(getTalentTreeById(id));
 provide('talentTreeId', id);
 
 const talentStore = useTalentStore();
 const talents = talentStore.talents.filter(x => x.talentTree === id);
 const talentRowsGrouped = Enumerable.from(talents).groupBy(x => x.talentRow).toDictionary(x => x.key());
 const rows = talentRowsGrouped.toEnumerable().select(x => x.key).toArray();
+
+const talentTree = talentStore.getTalentTree(id);
 
 const getTalents = (row: number) => {
   return talentRowsGrouped.get(row).select(x => x.id).toArray();
