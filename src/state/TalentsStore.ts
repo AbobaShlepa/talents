@@ -1,11 +1,14 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import defaultState, { type ITalent } from './data/defaultTalents';
+import defaultTalentTrees from './data/defaultTalentTrees';
 
 const useTalentStore = defineStore('talents', () => {
+  const talentTrees = defaultTalentTrees;
   const talents = ref<ITalent[]>(defaultState);
 
   const getById = computed(() => (id: number) => talents.value.find(x => x.id === id)!);
+  const getTalentTree = computed(() => (id: number) => talentTrees.find(x => x.id === id)!);
 
   const getByName = computed(
     () => (talentName: string) => talents.value.find(x => x.name === talentName)!
@@ -35,6 +38,7 @@ const useTalentStore = defineStore('talents', () => {
 
   return {
     talents,
+    talentTrees,
 
     resetTree,
 
@@ -42,6 +46,7 @@ const useTalentStore = defineStore('talents', () => {
     getByName,
     canDecrease,
     getPointsInTree,
+    getTalentTree,
   };
 });
 
