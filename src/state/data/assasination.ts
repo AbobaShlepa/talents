@@ -1,8 +1,8 @@
-import type { ITalent, ICounter } from './defaultTalents';
+import type { ITalent, ICounter} from './defaultTalents';
 
-const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
+const assasinationTalents = (counter: ICounter): ITalent[] => [
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 3,
     parentTalentName: null,
@@ -14,7 +14,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[1], [2], [3], [4], [5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 2,
     parentTalentName: null,
@@ -26,7 +26,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[20], [40]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 3,
     parentTalentName: null,
@@ -38,7 +38,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[1], [2], [3], [4], [5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 3,
     parentTalentName: null,
@@ -50,7 +50,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[20], [40], [60]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 2,
     parentTalentName: null,
@@ -62,7 +62,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[1], [2]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 3,
     parentTalentName: null,
@@ -74,7 +74,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[10], [20], [30]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 1,
     parentTalentName: null,
@@ -86,7 +86,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[20]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 2,
     parentTalentName: null,
@@ -98,7 +98,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[25], [50]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 5,
     parentTalentName: 'Malice',
@@ -110,7 +110,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[6], [12], [18], [24], [30]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 5,
     parentTalentName: null,
@@ -122,7 +122,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[4, 8], [8, 16], [12, 24], [16, 32], [20, 40]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 5,
     parentTalentName: null,
@@ -134,7 +134,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[2], [4], [6], [8], [10]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 1,
     parentTalentName: null,
@@ -146,7 +146,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[100]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 3,
     parentTalentName: null,
@@ -158,7 +158,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[3], [6], [9]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 5,
     parentTalentName: 'Cold Blood',
@@ -170,7 +170,7 @@ const assasinationTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[20], [40], [60], [80], [100]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0, 
     pointsTotal: 1,
     parentTalentName: null,

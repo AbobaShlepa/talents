@@ -1,8 +1,8 @@
 import type { ITalent, ICounter } from './defaultTalents';
 
-const combatTalents = ({ counter }: ICounter): ITalent[] => [
+const combatTalents = (counter: ICounter): ITalent[] => [
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 3,
     parentTalentName: null,
@@ -14,7 +14,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[0.5], [1], [1.5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 2,
     parentTalentName: null,
@@ -26,7 +26,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[3], [5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 5,
     parentTalentName: null,
@@ -38,7 +38,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[1], [2], [3], [4], [5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 3,
     parentTalentName: null,
@@ -50,7 +50,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[10], [20], [30]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 5,
     parentTalentName: null,
@@ -62,7 +62,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[1], [2], [3], [4], [5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 5,
     parentTalentName: null,
@@ -74,7 +74,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [[1], [2], [3], [4], [5]],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 2,
     parentTalentName: null,
@@ -86,7 +86,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [['45 sec'], ['1.5 min']],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 1,
     parentTalentName: 'Deflection',
@@ -99,7 +99,7 @@ const combatTalents = ({ counter }: ICounter): ITalent[] => [
     rankValues: [],
   },
   {
-    id: counter++,
+    id: counter.counter++,
     pointsCurrent: 0,
     pointsTotal: 2,
     parentTalentName: null,
