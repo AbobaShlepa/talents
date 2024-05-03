@@ -30,12 +30,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="tree">
+  <div class="tree" v-bind:style="{ 'background-image': 'url(' + talentTree.imageUrl + ')' }">
     <div class="name-container">
-      {{ talentTree.name }}
-    </div>
-    <div class="points-container">
-      {{ talentStore.getPointsInTree(id) }}
+      {{ talentTree.name }} ({{ talentStore.getPointsInTree(id) }})
     </div>
     <div class="row-container">
       <TalentRow v-for="row in rows" v-bind:key="row" :talent-ids="getTalents(+row)" />
@@ -65,25 +62,17 @@ onMounted(() => {
 
 .name-container {
   text-align: center;
-}
-
-.points-container {
-  border: 1px solid black;
-  border-radius: 25%;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  color: white;
 }
 
 .reset {
   bottom: 10px;
   right: 10px;
   color: red;
+  position: absolute;
+}
+
+.tree-image {
   position: absolute;
 }
 </style>
