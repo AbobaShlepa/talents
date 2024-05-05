@@ -10,7 +10,7 @@ const { id } = defineProps<{
 provide('talentId', id);
 
 const talentStore = useTalentStore();
-const { getById, getByName, canDecrease, getPointsInTree } = talentStore;
+const { getById, getByName, canDecrease, getPointsInTree, enoughPoints } = talentStore;
 const talent = ref(getById(id));
 const talentTreeId = inject<number>('talentTreeId')!;
 
@@ -24,7 +24,7 @@ const talentActive = computed(() => {
 
 const onLeftClick = (e: Event) => {
   e.preventDefault();
-  if (!talentActive.value) return;
+  if (!talentActive.value || !enoughPoints()) return;
 
   if (talent.value.pointsCurrent < talent.value.pointsTotal) {
     talent.value.pointsCurrent++;

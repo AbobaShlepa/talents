@@ -6,6 +6,7 @@ import defaultTalentTrees from './data/defaultTalentTrees';
 const useTalentStore = defineStore('talents', () => {
   const talentTrees = defaultTalentTrees;
   const talents = ref<ITalent[]>(defaultState);
+  const pointsMax = 41;
 
   const getById = computed(() => (id: number) => talents.value.find(x => x.id === id)!);
   const getTalentTree = computed(() => (id: number) => talentTrees.find(x => x.id === id)!);
@@ -28,6 +29,12 @@ const useTalentStore = defineStore('talents', () => {
       .reduce((sum, current) => (sum += current), 0);
   });
 
+  const enoughPoints = computed(() => () => {
+    return pointsMax > talents.value
+    .map(x => x.pointsCurrent)
+    .reduce((sum, current) => (sum += current), 0);
+  })
+
   function resetTree(talentTree: number) {
     talents.value
       .filter(x => x.talentTree === talentTree)
@@ -47,6 +54,7 @@ const useTalentStore = defineStore('talents', () => {
     canDecrease,
     getPointsInTree,
     getTalentTree,
+    enoughPoints
   };
 });
 
