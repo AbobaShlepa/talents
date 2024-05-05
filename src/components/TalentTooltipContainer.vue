@@ -25,6 +25,8 @@ import TalentTooltip from './TalentTooltip.vue';
   min-width: 250px;
   border-radius: 6px;
   padding: 5px;
+  left: 50px;
+  top: -100px;
 
   position: absolute;
   z-index: 1;
