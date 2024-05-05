@@ -31,7 +31,7 @@ export interface ITalentInfo {
   justify-content: space-evenly;
 }
 .empty {
-  width: 50px;
-  height: 50px;
+  width: 52.3px;
+  height: 52.3px;
 }
 </style>
