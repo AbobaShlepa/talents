@@ -21,6 +21,7 @@ export interface ITalent {
   talentTree: number;
   descriptionTemplate: string;
   rankValues: any[][] | [];
+  position: number;
 }
 
 export interface ICounter {

@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import TalentRow from './TalentRow.vue';
+import TalentRow, { type ITalentInfo } from './TalentRow.vue';
 import { onMounted, provide } from 'vue';
 import drawLines from '@/helpers/arrow';
 import useTalentStore from '@/state/TalentsStore';
@@ -18,10 +18,9 @@ const rows = talentRowsGrouped.toEnumerable().select(x => x.key).toArray();
 const talentTree = talentStore.getTalentTree(id);
 
 const getTalents = (row: number) => {
-  return talentRowsGrouped.get(row).select(x => x.id).toArray();
+  return talentRowsGrouped.get(row).select<ITalentInfo>(x => ({id: x.id, position: x.position})).toArray();
 }
 const talentIds = talents.map(x => x.id);
-
 
 onMounted(() => {
   drawLines(talentIds);
@@ -35,7 +34,7 @@ onMounted(() => {
       {{ talentTree.name }} ({{ talentStore.getPointsInTree(id) }})
     </div>
     <div class="row-container">
-      <TalentRow v-for="row in rows" v-bind:key="row" :talent-ids="getTalents(+row)" />
+      <TalentRow v-for="row in rows" v-bind:key="row" :talent-info="getTalents(+row)" />
     </div>
     <button class="reset" @click="() => talentStore.resetTree(id)">
       X
@@ -63,6 +62,8 @@ onMounted(() => {
 .name-container {
   text-align: center;
   color: white;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 .reset {

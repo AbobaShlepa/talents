@@ -12,6 +12,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Gouge',
     descriptionTemplate: 'Increases the effect duration of your Gouge ability by {0} sec.',
     rankValues: [[0.5], [1], [1.5]],
+    position: 1,
   },
   {
     id: counter.counter++,
@@ -24,6 +25,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Sinister Strike',
     descriptionTemplate: 'Reduces the Energy const of your Sinister Strike ability by {0}.',
     rankValues: [[3], [5]],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -36,6 +38,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Lightning Reflexes',
     descriptionTemplate: 'Increases your Dodge chance by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 3,
   },
   {
     id: counter.counter++,
@@ -48,6 +51,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Backstab',
     descriptionTemplate: 'Increases the critical strike chance of your Backstab ability by {0}%.',
     rankValues: [[10], [20], [30]],
+    position: 1,
   },
   {
     id: counter.counter++,
@@ -60,6 +64,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Deflection',
     descriptionTemplate: 'Increases your parry chance by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -72,6 +77,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Precision',
     descriptionTemplate: 'Increases your chance to hit with melee weapons by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 3,
   },
   {
     id: counter.counter++,
@@ -84,6 +90,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Endurance',
     descriptionTemplate: 'Reduces the cooldown of your Sprint and Evasion abilities by {0}.',
     rankValues: [['45 sec'], ['1.5 min']],
+    position: 1,
   },
   {
     id: counter.counter++,
@@ -96,6 +103,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Riposte',
     descriptionTemplate: "A strike that becomes active after parrying an opponent's attack.  This attack deals 150% weapon damage and disarms the target for 6 sec.",
     rankValues: [],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -108,6 +116,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved sprint',
     descriptionTemplate: 'Gives a {0}% chance to remove all movement impairing effects when you active your Sprint ability.',
     rankValues: [[50], [100]],
+    position: 4,
   },
   {
     id: counter.counter++,
@@ -120,6 +129,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Kick',
     descriptionTemplate: 'Gives your Kick ability a {0}% chance to silence the target for 2 sec.',
     rankValues: [[50], [100]],
+    position: 1,
   },
   {
     id: counter.counter++,
@@ -132,6 +142,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Dagger Specialization',
     descriptionTemplate: 'Increases your chance to get a critical strike with Daggers by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -144,6 +155,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Dual Wield Specialization',
     descriptionTemplate: 'Increases the damage done by your offhand weapon by {0}%.',
     rankValues: [[10], [20], [30], [40], [50]],
+    position: 3,
   },
   {
     id: counter.counter++,
@@ -156,6 +168,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Mace Specialization',
     descriptionTemplate: 'Increases your skill with Maces by {0}, and gives you a {0}% chance to stun your target for 3 sec with a mace.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 1,
   },
   {
     id: counter.counter++,
@@ -168,6 +181,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Blade Flurry',
     descriptionTemplate: 'Increases your attack speed by 20%.  In addition, attacks strike an additional nearby opponent.  Lasts 15 sec.',
     rankValues: [],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -180,6 +194,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Sword Specialization',
     descriptionTemplate: 'Gives you a {0}% chance to get an extra attack on the same target after dealing damage with your Sword.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 3,
   },
   {
     id: counter.counter++,
@@ -192,6 +207,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Fist Weapon Specialization',
     descriptionTemplate: 'Increases your chance to get a critical strike with Fist Weapons by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position: 4,
   },
   {
     id: counter.counter++,
@@ -204,6 +220,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Weapon Expertise',
     descriptionTemplate: 'Increases your skill with Sword, Fist and Dagger weapons by {0}.',
     rankValues: [[3], [5]],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -217,6 +234,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     descriptionTemplate:
       'Increases the damage of your Sinister Strike and Eviscerate abilities by {0}%.',
     rankValues: [[2], [4], [6], [8], [10]],
+    position: 3,
   },
   {
     id: counter.counter++,
@@ -229,6 +247,7 @@ const combatTalents = (counter: ICounter): ITalent[] => [
     name: 'Adrenaline Rush',
     descriptionTemplate: 'Increases your Energy regeneration rate by {0}% for 15 sec.',
     rankValues: [[100]],
+    position: 2,
   },
 ];
 

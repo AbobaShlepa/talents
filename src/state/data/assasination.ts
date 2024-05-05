@@ -12,6 +12,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Eviscerate',
     descriptionTemplate: 'Increases the damage done by your Eviscerate ability by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position:  1
   },
   {
     id: counter.counter++,
@@ -24,6 +25,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Remorseless Attacks',
     descriptionTemplate: 'After killing an opponent that yields experience or honor, gives you a {0}% increased critical strike chance on your next Sinister Strike, Backstab, Ambush, or Ghostly Strike.  Lasts 20 sec.',
     rankValues: [[20], [40]],
+    position:  2,
   },
   {
     id: counter.counter++,
@@ -36,6 +38,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Malice',
     descriptionTemplate: 'Increases your critical strike chance by {0}%.',
     rankValues: [[1], [2], [3], [4], [5]],
+    position:  3,
   },
   {
     id: counter.counter++,
@@ -48,6 +51,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Ruthlessness',
     descriptionTemplate: 'Gives your finishing moves a {0}% chance to add a combo point to your target.',
     rankValues: [[20], [40], [60]],
+    position:  1
   },
   {
     id: counter.counter++,
@@ -60,6 +64,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Murder',
     descriptionTemplate: 'Increases all damage caused against Humanoid, Giant, Beast and Dragonkin targets by {0}%',
     rankValues: [[1], [2]],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -72,6 +77,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Slice and Dice',
     descriptionTemplate: 'Increases the duration of your Slice and Dice ability by {0}%',
     rankValues: [[10], [20], [30]],
+    position: 4
   },
   {
     id: counter.counter++,
@@ -84,6 +90,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Relentless Strikes',
     descriptionTemplate: 'Your finishing moves have a {0}% chance per combo point to restore 25 energy.',
     rankValues: [[20]],
+    position:  1
   },
   {
     id: counter.counter++,
@@ -96,6 +103,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Expose Armor',
     descriptionTemplate: 'Increases the armor reduced by your Expose Armor ability by {0}%.',
     rankValues: [[25], [50]],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -108,6 +116,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Lethality',
     descriptionTemplate: 'Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Ghostly Strike, and Hemorrhage abilities by 6%.',
     rankValues: [[6], [12], [18], [24], [30]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -120,6 +129,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Vile Poisons',
     descriptionTemplate: 'Increases the damage dealt by your poisons by {0}% and gives your poisons an additional {1}% chance to resist dispel effects.',
     rankValues: [[4, 8], [8, 16], [12, 24], [16, 32], [20, 40]],
+    position:  2
   },
   {
     id: counter.counter++,
@@ -132,6 +142,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Poisons',
     descriptionTemplate: 'Increases the chance to apply poisons to your target by {0}%.',
     rankValues: [[2], [4], [6], [8], [10]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -144,6 +155,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Cold Blood',
     descriptionTemplate: 'When activated, increases the critical strike chance of your next Sinister Strike, Backstab, Ambush, or Eviscerate by {0}%.',
     rankValues: [[100]],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -156,6 +168,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Kidney Shot',
     descriptionTemplate: 'While affected by your Kidney Shot ability, the target receives an additional {0}% damage from all sources.',
     rankValues: [[3], [6], [9]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -168,6 +181,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Seal Fate',
     descriptionTemplate: 'Your critical strikes from abilities that add combo points  have a 20% chance to add an additional combo point.',
     rankValues: [[20], [40], [60], [80], [100]],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -180,6 +194,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Vigor',
     descriptionTemplate: 'Increases your maximum Energy by {0}.',
     rankValues: [[10]],
+    position: 2
   },
 ];
 

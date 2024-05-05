@@ -12,6 +12,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Master of Deception',
     descriptionTemplate: 'Reduces the chance enemies have to detect you while in Stealth mode.',
     rankValues: [],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -24,6 +25,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Opportunity',
     descriptionTemplate: 'Increases the damage dealt when striking from behind with your Backstab, Garrote, or Ambush abilities by {0}%.',
     rankValues: [[4], [8], [12], [16], [20]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -36,6 +38,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Sleight of Hand',
     descriptionTemplate: 'Reduces the chance you are critically hit by melee and ranged attacks by 1% and increases the threat reduction of your Feint ability by 10%.',
     rankValues: [[1, 10], [2, 20]],
+    position: 1
   },
   {
     id: counter.counter++,
@@ -48,6 +51,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Elusiveness',
     descriptionTemplate: 'Reduces the cooldown of your Vanish and Blind abilities by {0}.',
     rankValues: [['45 sec'], ['1.5 min']],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -60,6 +64,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Camouflage',
     descriptionTemplate: 'Increases your speed while stealthed by {0}% and reduces the cooldown of your Stealth ability by {1} sec.',
     rankValues: [[3, 1], [6, 2], [9, 3], [12, 4], [15, 5]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -72,6 +77,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Initiative',
     descriptionTemplate: 'Gives you a {0}% chance to add an additional combo point to your target when using your Ambush, Garrote, or Cheap Shot ability.',
     rankValues: [[25], [50], [75]],
+    position: 1
   },
   {
     id: counter.counter++,
@@ -84,6 +90,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Ghostly Strike',
     descriptionTemplate: 'A strike that deals {0}% weapon damage and increases your chance to dodge by {1}% for 7 sec.  Awards 1 combo point.',
     rankValues: [[125, 15]],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -96,6 +103,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Ambush',
     descriptionTemplate: 'Increases the critical strike chance of your Ambush ability by {0}%.',
     rankValues: [[15], [30], [45]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -108,6 +116,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Setup',
     descriptionTemplate: 'Gives you a {0}% chance to add a combo point to your target after dodging their attack or fully resisting one of their spells.',
     rankValues: [[15], [30], [45]],
+    position: 1
   },
   {
     id: counter.counter++,
@@ -120,6 +129,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Sap',
     descriptionTemplate: 'Gives you a {0}% chance to return to stealth mode after using your Sap ability.',
     rankValues: [[30], [60], [90]],
+    position: 2
   },
   {
     id: counter.counter++,
@@ -132,6 +142,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Serrated Blades',
     descriptionTemplate: "Causes your attacks to ignore 0 of your target's Armor and increases the damage dealt by your Rupture ability by 10%.  The amount of Armor reduced increases with your level.",
     rankValues: [[0, 10], [0, 20], [0, 30]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -144,6 +155,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Heightened Senses',
     descriptionTemplate: 'Increases your Stealth detection and reduces the chance you are hit by spells and ranged attacks by {0}%.',
     rankValues: [[2], [4]],
+    position: 1
   },
   {
     id: counter.counter++,
@@ -156,6 +168,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Preparation',
     descriptionTemplate: 'When activated, this ability immediately finishes the cooldown on your other Rogue abilities.',
     rankValues: [],
+    position: 2,
   },
   {
     id: counter.counter++,
@@ -168,6 +181,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Dirty Deeds',
     descriptionTemplate: 'Reduces the Energy cost of your Cheap Shot and Garrote abilities by 10.',
     rankValues: [[10], [20]],
+    position: 3
   },
   {
     id: counter.counter++,
@@ -180,6 +194,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Hemorrhage',
     descriptionTemplate: 'An instant strike that damages the opponent and causes the target to hemorrhage, increasing any Physical damage dealt to the target by up to {0}.  Lasts 30 charges or 15 sec.  Awards 1 combo point.',
     rankValues: [[3]],
+    position: 4
   },
   {
     id: counter.counter++,
@@ -192,6 +207,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Deadliness',
     descriptionTemplate: 'Increases your Attack Power by {0}%.',
     rankValues: [[2], [4], [6], [8], [10]],
+    position:  3
   },
   {
     id: counter.counter++,
@@ -204,6 +220,7 @@ const subtletyTalents = (counter: ICounter): ITalent[] => [
     name: 'Premeditation',
     descriptionTemplate: 'When used, adds 2 combo points to your target.  You must add to or use those combo points within 10 sec or the combo points are lost. ',
     rankValues: [],
+    position: 2,
   },
 ];
 

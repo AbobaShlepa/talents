@@ -2,13 +2,23 @@
 import TalentItem from './TalentItem.vue';
 
 defineProps<{
-  talentIds: number[],
+  talentInfo: ITalentInfo[]
 }>();
+
+const positions = [1, 2, 3, 4];
+
+export interface ITalentInfo {
+  id: number;
+  position: number;
+}
 </script>
 
 <template>
   <div class="row">
-    <TalentItem v-for="talentId in talentIds" :id="talentId" v-bind:key="talentId" />
+    <template v-for="position in positions" v-bind:key="position">
+      <TalentItem v-if="talentInfo.find(x => x.position === position)" :id="talentInfo.find(x => x.position === position)!.id" />
+      <div v-else class="empty"></div>
+    </template>
   </div>
 </template>
 
@@ -19,5 +29,9 @@ defineProps<{
   margin-bottom: 20px;
   width: 250px;
   justify-content: space-evenly;
+}
+.empty {
+  width: 50px;
+  height: 50px;
 }
 </style>
