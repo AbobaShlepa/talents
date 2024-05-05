@@ -11,8 +11,8 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     talentTree: 1,
     name: 'Improved Eviscerate',
     descriptionTemplate: 'Increases the damage done by your Eviscerate ability by {0}%.',
-    rankValues: [[1], [2], [3], [4], [5]],
-    position:  1
+    rankValues: [[5], [10], [15]],
+    position:  3
   },
   {
     id: counter.counter++,
@@ -30,7 +30,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
   {
     id: counter.counter++,
     pointsCurrent: 0, 
-    pointsTotal: 3,
+    pointsTotal: 5,
     parentTalentName: null,
     imageUrl: 'https://classicdb.ch/images/icons/medium/ability_racial_bloodrage.jpg',
     talentRow: 1,
