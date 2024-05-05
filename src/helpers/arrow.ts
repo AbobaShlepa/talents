@@ -18,10 +18,9 @@ export default function drawLines(talentIds: number[]) {
         sourcePosition: close(fromObject.x, toObject.x) ? 'bottomCenter' : 'middleRight',
         endpoint: { size: 0.5 }
       }
-      console.log(talent.name, fromObject.x, toObject.x, options);
 
       arrowLine(from, to, options);
-    }
+    } 
   }
 }
 

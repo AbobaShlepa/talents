@@ -12,7 +12,7 @@ const assasinationTalents = (counter: ICounter): ITalent[] => [
     name: 'Improved Eviscerate',
     descriptionTemplate: 'Increases the damage done by your Eviscerate ability by {0}%.',
     rankValues: [[5], [10], [15]],
-    position:  3
+    position:  1
   },
   {
     id: counter.counter++,
