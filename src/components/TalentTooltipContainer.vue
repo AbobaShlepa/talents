@@ -5,7 +5,7 @@ import TalentTooltip from './TalentTooltip.vue';
 <template>
   <div class="tooltip">
     <slot name="content"></slot>
-    <div class="tooltip-content">
+    <div class="right">
       <slot name="tooltip">
         <TalentTooltip />
       </slot>
@@ -15,24 +15,26 @@ import TalentTooltip from './TalentTooltip.vue';
 
 <style scoped>
 .tooltip {
-  position: relative;
   display: inline-block;
+  position: relative;
+  border-bottom: 1px dotted #666;
+  text-align: left;
 }
 
-.tooltip .tooltip-content {
-  visibility: hidden;
-  width: fit-content;
+.tooltip .right {
   min-width: 250px;
-  border-radius: 6px;
-  padding: 5px;
-  left: 50px;
-  top: -100px;
-
+  top: 50%;
+  left: 80%;
+  margin-left: 20px;
+  transform: translate(0, -50%);
+  padding: 10px 20px;
+  color: #444444;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
+  display: none;
 }
 
-.tooltip:hover .tooltip-content {
-  visibility: visible;
+.tooltip:hover .right {
+  display: block;
 }
 </style>
