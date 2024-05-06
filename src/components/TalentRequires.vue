@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useTalentStore from '@/state/TalentsStore';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const { id } = defineProps<{
 	id: number
@@ -10,7 +10,20 @@ const store = useTalentStore();
 
 const { talentRow, talentTree, parentTalentName } = store.getById(id);
 const tree = store.getTalentTree(talentTree);
-const pointsInTree = ref(store.getPointsInTree(talentTree));
+const pointsInTreeRequired = talentRow * 5 - 5;
+
+const notEnoughPointsInTree = computed(() => {
+	return store.getPointsInTree(talentTree) < pointsInTreeRequired;
+});
+
+const parentRequired = computed(() => {
+	if (!parentTalentName) {
+		return false;
+	}
+
+	const { pointsTotal, pointsCurrent } = store.getByName(parentTalentName);
+	return pointsTotal !== pointsCurrent;
+});
 
 function getRequires() {
 	if (talentRow === 1) {
@@ -18,13 +31,12 @@ function getRequires() {
 	}
 
 	const result = [];
-	const pointsInTreeRequired = talentRow * 5 - 5;
-	if (pointsInTree.value < pointsInTreeRequired) {
+	if (notEnoughPointsInTree.value) {
 		result.push(`Requires ${pointsInTreeRequired} points in ${tree.name} talents`);
 	}
 
-	if (parentTalentName) {
-		const { name, pointsTotal } = store.getByName(parentTalentName);
+	if (parentRequired.value) {
+		const { name, pointsTotal } = store.getByName(parentTalentName!);
 		result.push(`Requires ${pointsTotal} points in ${name}`)
 	}
 
