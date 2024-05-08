@@ -16,13 +16,13 @@ const { treeIds } = defineProps<{
 .tree-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
-@media screen {
+@media (pointer: coarse) {
   .tree-container {
     display: flex;
     flex-direction: column;
-    margin: 10px auto;
   }
 }
 </style>

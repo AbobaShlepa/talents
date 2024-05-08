@@ -18,7 +18,7 @@ import ClassTalents from './components/ClassTalents.vue';
   background-image: url('https://r4.wallpaperflare.com/wallpaper/260/652/937/world-of-warcraft-rogue-wallpaper-92d152f0bda6ae6baab8b295f0e82902.jpg');
 }
 
-@media only screen {
+@media (pointer: coarse) {
   .center {
     overflow-y: auto;
     display: block;

@@ -82,8 +82,8 @@ const onRightCLick = (e: Event) => {
 .points {
   all: unset;
   position: absolute;
-  bottom: -5px;
-  right: -5px;
+  bottom: -10px;
+  right: -10px;
   color: #ABC;
   background-color: #111;
   user-select: none;
