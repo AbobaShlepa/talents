@@ -51,9 +51,10 @@ onMounted(() => {
   padding: 20px;
   position: relative;
   user-select: none;
+  margin: 0 10px;
 }
 
-@media only screen {
+@media (pointer: coarse) {
   .tree {
     margin: 10px auto;
   }

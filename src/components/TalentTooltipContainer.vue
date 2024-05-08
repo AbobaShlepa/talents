@@ -1,12 +1,16 @@
 <script setup lang='ts'>
+import { ref } from 'vue';
 import TalentTooltip from './TalentTooltip.vue';
+const shown = ref(false);
+const show = () => shown.value = true;
+const hide = () => shown.value = false;
 </script>
 
 <template>
-  <div class="tooltip">
+  <div class="tooltip" @touchstart="show" @touchend="hide" @mouseover="show" @mouseleave="hide">
     <slot name="content"></slot>
-    <div class="right">
-      <slot name="tooltip">
+    <div v-if="shown" class="right">
+      <slot name=" tooltip">
         <TalentTooltip />
       </slot>
     </div>
@@ -23,17 +27,12 @@ import TalentTooltip from './TalentTooltip.vue';
 .tooltip .right {
   min-width: 250px;
   top: 50%;
-  left: 80%;
+  left: 70%;
   margin-left: 20px;
   transform: translate(0, -50%);
   padding: 10px 20px;
   color: #444444;
   position: absolute;
   z-index: 2;
-  display: none;
-}
-
-.tooltip:hover .right {
-  display: block;
 }
 </style>
