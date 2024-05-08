@@ -63,25 +63,29 @@ const onRightCLick = (e: Event) => {
 </template>
 
 <style scoped>
+* {
+  --size: 46px;
+}
+
 .talent {
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  width: var(--size);
+  height: var(--size);
   position: relative;
 }
 
 .talent-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 25%;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 15%;
 }
 
 .points {
   all: unset;
   position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: white;
+  bottom: -5px;
+  right: -5px;
+  color: #ABC;
+  background-color: #111;
   user-select: none;
 }
 
@@ -90,14 +94,14 @@ const onRightCLick = (e: Event) => {
 }
 
 .border {
-  border-radius: 25%;
+  border-radius: 15%;
 }
 
 .available {
-  border: 2px solid #209e00;
+  border: 1px solid #209e00;
 }
 
 .started {
-  border: 2px solid gold;
+  border: 1px solid gold;
 }
 </style>

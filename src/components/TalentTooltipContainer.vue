@@ -17,7 +17,6 @@ import TalentTooltip from './TalentTooltip.vue';
 .tooltip {
   display: inline-block;
   position: relative;
-  border-bottom: 1px dotted #666;
   text-align: left;
 }
 
