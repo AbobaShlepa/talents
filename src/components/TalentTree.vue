@@ -18,7 +18,7 @@ const rows = talentRowsGrouped.toEnumerable().select(x => x.key).toArray();
 const talentTree = talentStore.getTalentTree(id);
 
 const getTalents = (row: number) => {
-  return talentRowsGrouped.get(row).select<ITalentInfo>(x => ({id: x.id, position: x.position})).toArray();
+  return talentRowsGrouped.get(row).select<ITalentInfo>(x => ({ id: x.id, position: x.position })).toArray();
 }
 const talentIds = talents.map(x => x.id);
 
@@ -48,7 +48,6 @@ onMounted(() => {
   width: fit-content;
   height: fit-content;
   border-radius: 25px;
-  background-color: azure;
   padding: 20px;
   position: relative;
   user-select: none;
