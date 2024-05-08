@@ -17,4 +17,12 @@ const { treeIds } = defineProps<{
   display: flex;
   flex-direction: row;
 }
+
+@media screen {
+  .tree-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+  }
+}
 </style>

@@ -53,6 +53,12 @@ onMounted(() => {
   user-select: none;
 }
 
+@media only screen {
+  .tree {
+    margin: 10px auto;
+  }
+}
+
 .row-container {
   display: flex;
   flex-direction: column;
