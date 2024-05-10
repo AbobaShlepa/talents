@@ -50,6 +50,17 @@ const formatString = (template: string, ...args: any[]) => {
   border-radius: 10%;
   padding: 10px;
   user-select: none;
+  -webkit-user-select: none;
+  z-index: 100;
+
+  position: absolute;
+  min-width: 250px;
+  top: 50%;
+  left: 70%;
+  margin-left: 20px;
+  transform: translate(0, -50%);
+  padding: 10px 20px;
+  color: #444444;
 }
 
 .talent-name,

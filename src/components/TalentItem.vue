@@ -1,30 +1,11 @@
 <script setup lang='ts'>
 import { provide } from 'vue';
-import TalentTooltip from './TalentTooltipContainer.vue';
 import { useTalent } from '@/composables/talent';
 
 const { id } = defineProps<{ id: number }>();
 const { talent, talentActive } = useTalent(id);
 provide('talentId', id);
-
 </script>
-
-<!-- <template>
-  <TalentTooltip>
-    <template #content>
-      <div :id="`talent_${id}`" class="talent border" v-bind:class="{
-        disabled: !talentActive,
-        available: talent.pointsCurrent === 0,
-        started: talent.pointsCurrent > 0
-      }">
-        <img class="talent-icon" v-bind:src="talent.imageUrl" />
-        <button class="points border">
-          {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
-        </button>
-      </div>
-    </template>
-  </TalentTooltip>
-</template> -->
 
 <template>
   <div :id="`talent_${id}`" class="talent border" v-bind:class="{

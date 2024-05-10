@@ -1,9 +1,14 @@
 <script setup lang='ts'>
 import { useTalent } from '@/composables/talent';
-import TalentTooltipContainer from './TalentTooltipContainer.vue';
+import TalentTooltip from './TalentTooltip.vue';
 import TalentItem from './TalentItem.vue';
+import { ref } from 'vue';
 const { id } = defineProps<{ id: number }>();
 const { increasePoints, decreasePoints } = useTalent(id);
+
+const shown = ref(false);
+const show = () => shown.value = true;
+const hide = () => shown.value = false;
 
 const onLeftClick = (e: Event) => {
   e.preventDefault();
@@ -17,11 +22,16 @@ const onRightClick = (e: Event) => {
 </script>
 
 <template>
-  <TalentTooltipContainer :id>
-    <template #content>
-      <div @click.left="onLeftClick" @click.right="onRightClick">
-        <TalentItem :id />
-      </div>
-    </template>
-  </TalentTooltipContainer>
+  <div class="desktop-wrap">
+    <div @click.left="onLeftClick" @click.right="onRightClick" @mouseenter="show" @mouseleave="hide">
+      <TalentItem :id />
+    </div>
+    <TalentTooltip :id v-if="shown" />
+  </div>
 </template>
+
+<style scoped>
+.desktop-wrap {
+  position: relative;
+}
+</style>
