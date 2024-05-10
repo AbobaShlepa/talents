@@ -1,10 +1,7 @@
 <script setup lang='ts'>
-const { id } = defineProps<{ id: number }>();
+const { id, shown } = defineProps<{ id: number, shown: ref<boolean> }>();
 import { ref } from 'vue';
 import TalentTooltip from './TalentTooltip.vue';
-const shown = ref(false);
-const show = () => shown.value = true;
-const hide = () => shown.value = false;
 </script>
 
 <template>

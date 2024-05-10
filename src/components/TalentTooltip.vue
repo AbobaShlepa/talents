@@ -1,9 +1,9 @@
 <script setup lang='ts'>
 import useTalentStore from '@/state/TalentsStore';
-import { inject, ref } from 'vue';
+import { ref } from 'vue';
 import TalentRequires from './TalentRequires.vue';
 
-const id = inject<number>('talentId')!;
+const { id } = defineProps<{ id: number }>();
 
 const { getById } = useTalentStore();
 const talent = ref(getById(id));
@@ -53,7 +53,7 @@ const formatString = (template: string, ...args: any[]) => {
 }
 
 .talent-name,
-.rank{
+.rank {
   color: #FFF;
 }
 

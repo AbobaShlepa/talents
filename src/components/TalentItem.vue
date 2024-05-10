@@ -1,58 +1,22 @@
 <script setup lang='ts'>
-import useTalentStore from '@/state/TalentsStore';
-import { computed, inject, provide, ref } from 'vue';
+import { provide } from 'vue';
 import TalentTooltip from './TalentTooltipContainer.vue';
+import { useTalent } from '@/composables/talent';
 
-const { id } = defineProps<{
-  id: number,
-}>();
-
+const { id } = defineProps<{ id: number }>();
+const { talent, talentActive } = useTalent(id);
 provide('talentId', id);
-
-const talentStore = useTalentStore();
-const { getById, getByName, canDecrease, getPointsInTree, enoughPoints } = talentStore;
-const talent = ref(getById(id));
-const talentTreeId = inject<number>('talentTreeId')!;
-
-const parentTalent = talent.value.parentTalentName ? getByName(talent.value.parentTalentName) : null;
-
-const talentActive = computed(() => {
-  const pointsInTreeRequired = talent.value.talentRow * 5 - 5;
-  return pointsInTreeRequired <= getPointsInTree(talentTreeId) &&
-    (parentTalent === null || parentTalent.pointsCurrent === parentTalent.pointsTotal);
-})
-
-const onLeftClick = (e: Event) => {
-  e.preventDefault();
-  if (!talentActive.value || !enoughPoints()) return;
-
-  if (talent.value.pointsCurrent < talent.value.pointsTotal) {
-    talent.value.pointsCurrent++;
-  }
-}
-
-const onRightCLick = (e: Event) => {
-  e.preventDefault();
-  if (!talentActive.value || !canDecrease(talent.value.talentRow, talent.value.talentTree)) {
-    return;
-  }
-
-  if (talent.value.pointsCurrent > 0) {
-    talent.value.pointsCurrent--;
-  }
-}
 
 </script>
 
-<template>
+<!-- <template>
   <TalentTooltip>
     <template #content>
-      <div :id="`talent_${id}`" class="talent border" @click.left="onLeftClick" @click.right="onRightCLick"
-        v-bind:class="{
-          disabled: !talentActive,
-          available: talent.pointsCurrent === 0,
-          started: talent.pointsCurrent > 0
-        }">
+      <div :id="`talent_${id}`" class="talent border" v-bind:class="{
+        disabled: !talentActive,
+        available: talent.pointsCurrent === 0,
+        started: talent.pointsCurrent > 0
+      }">
         <img class="talent-icon" v-bind:src="talent.imageUrl" />
         <button class="points border">
           {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
@@ -60,6 +24,19 @@ const onRightCLick = (e: Event) => {
       </div>
     </template>
   </TalentTooltip>
+</template> -->
+
+<template>
+  <div :id="`talent_${id}`" class="talent border" v-bind:class="{
+    disabled: !talentActive,
+    available: talent.pointsCurrent === 0,
+    started: talent.pointsCurrent > 0
+  }">
+    <img class="talent-icon" v-bind:src="talent.imageUrl" />
+    <button class="points border">
+      {{ talent.pointsCurrent }}/{{ talent.pointsTotal }}
+    </button>
+  </div>
 </template>
 
 <style scoped>
@@ -71,6 +48,8 @@ const onRightCLick = (e: Event) => {
   width: var(--size);
   height: var(--size);
   position: relative;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .talent-icon {
@@ -86,7 +65,6 @@ const onRightCLick = (e: Event) => {
   right: -10px;
   color: #ABC;
   background-color: #111;
-  user-select: none;
 }
 
 .disabled {

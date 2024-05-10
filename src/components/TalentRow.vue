@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import TalentItem from './TalentItem.vue';
+import TalentItemDesktop from './TalentItemDesktop.vue';
 
 defineProps<{
   talentInfo: ITalentInfo[]
@@ -16,8 +16,8 @@ export interface ITalentInfo {
 <template>
   <div class="row">
     <template v-for="position in positions" v-bind:key="position">
-      <TalentItem v-if="talentInfo.find(x => x.position === position)" :id="talentInfo.find(x => x.position === position)!.id" />
-      <div v-else class="empty"></div>
+      <div v-if="talentInfo.find(x => x.position === position) === undefined" class="empty"></div>
+      <TalentItemDesktop v-else :id="talentInfo.find(x => x.position === position)!.id" />
     </template>
   </div>
 </template>
@@ -30,6 +30,7 @@ export interface ITalentInfo {
   width: 250px;
   justify-content: space-evenly;
 }
+
 .empty {
   width: 52.3px;
   height: 52.3px;
