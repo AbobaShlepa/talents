@@ -1,9 +1,9 @@
 <script setup lang='ts'>
 import useTalentStore from '@/state/TalentsStore';
-import { inject, ref } from 'vue';
+import { ref } from 'vue';
 import TalentRequires from './TalentRequires.vue';
 
-const id = inject<number>('talentId')!;
+const { id, onClose } = defineProps<{ id: number, onClose: () => void | null }>();
 
 const { getById } = useTalentStore();
 const talent = ref(getById(id));
@@ -40,6 +40,9 @@ const formatString = (template: string, ...args: any[]) => {
         {{ getDescription(talent.pointsCurrent + 1) }}
       </div>
     </div>
+    <button v-if="onClose" class="close-button" type="button" @click="onClose">
+      x
+    </button>
   </div>
 </template>
 
@@ -50,14 +53,36 @@ const formatString = (template: string, ...args: any[]) => {
   border-radius: 10%;
   padding: 10px;
   user-select: none;
+  -webkit-user-select: none;
+  z-index: 100;
+
+  position: absolute;
+  min-width: 250px;
+  top: 50%;
+  left: 70%;
+  margin-left: 20px;
+  transform: translate(0, -50%);
+  padding: 10px 20px;
+  color: #444444;
+}
+
+@media (pointer: coarse) {
+  .main {
+    top: 30%;
+    left: 20%;
+  }
 }
 
 .talent-name,
-.rank{
+.rank {
   color: #FFF;
 }
 
 .description {
   color: goldenrod;
+}
+
+.close-button {
+  color: red;
 }
 </style>
