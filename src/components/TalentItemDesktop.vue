@@ -19,6 +19,8 @@ const onRightClick = (e: Event) => {
   e.preventDefault();
   decreasePoints()
 }
+
+const doNothing = () => { };
 </script>
 
 <template>
@@ -26,7 +28,7 @@ const onRightClick = (e: Event) => {
     <div @click.left="onLeftClick" @click.right="onRightClick" @mouseenter="show" @mouseleave="hide">
       <TalentItem :id />
     </div>
-    <TalentTooltip :id v-if="shown" />
+    <TalentTooltip :id v-if="shown" :on-close="doNothing" />
   </div>
 </template>
 

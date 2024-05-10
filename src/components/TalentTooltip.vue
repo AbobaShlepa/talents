@@ -3,7 +3,7 @@ import useTalentStore from '@/state/TalentsStore';
 import { ref } from 'vue';
 import TalentRequires from './TalentRequires.vue';
 
-const { id } = defineProps<{ id: number }>();
+const { id, onClose } = defineProps<{ id: number, onClose: () => void | null }>();
 
 const { getById } = useTalentStore();
 const talent = ref(getById(id));
@@ -40,6 +40,9 @@ const formatString = (template: string, ...args: any[]) => {
         {{ getDescription(talent.pointsCurrent + 1) }}
       </div>
     </div>
+    <button v-if="onClose" class="close-button" type="button" @click="onClose">
+      x
+    </button>
   </div>
 </template>
 
@@ -63,6 +66,13 @@ const formatString = (template: string, ...args: any[]) => {
   color: #444444;
 }
 
+@media (pointer: coarse) {
+  .main {
+    top: 30%;
+    left: 20%;
+  }
+}
+
 .talent-name,
 .rank {
   color: #FFF;
@@ -70,5 +80,9 @@ const formatString = (template: string, ...args: any[]) => {
 
 .description {
   color: goldenrod;
+}
+
+.close-button {
+  color: red;
 }
 </style>

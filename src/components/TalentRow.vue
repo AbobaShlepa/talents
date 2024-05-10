@@ -1,5 +1,7 @@
 <script setup lang='ts'>
 import TalentItemDesktop from './TalentItemDesktop.vue';
+import TalentItemMobile from './TalentItemMobile.vue';
+import useMobileDetection from '@/composables/mobile';
 
 defineProps<{
   talentInfo: ITalentInfo[]
@@ -17,6 +19,7 @@ export interface ITalentInfo {
   <div class="row">
     <template v-for="position in positions" v-bind:key="position">
       <div v-if="talentInfo.find(x => x.position === position) === undefined" class="empty"></div>
+      <TalentItemMobile v-else-if="useMobileDetection()" :id="talentInfo.find(x => x.position === position)!.id" />
       <TalentItemDesktop v-else :id="talentInfo.find(x => x.position === position)!.id" />
     </template>
   </div>
