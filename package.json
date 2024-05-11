@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -14,6 +14,7 @@
     "deploy": "run-p type-check \"build-only {@}\" -- && git add dist && git commit -m \"deploy\" && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
+    "@vueuse/core": "^10.9.0",
     "arrow-line": "^0.7.5",
     "linq": "^4.0.2",
     "pinia": "^2.1.7",

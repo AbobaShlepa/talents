@@ -3,8 +3,11 @@ import { useTalent } from '@/composables/talent';
 import TalentTooltip from './TalentTooltip.vue';
 import TalentItem from './TalentItem.vue';
 import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 const { id } = defineProps<{ id: number }>();
 const { increasePoints, decreasePoints } = useTalent(id);
+const el = ref(null);
+onClickOutside(el, () => onClosed());
 
 const shown = ref(false);
 const show = () => shown.value = true;
@@ -25,7 +28,7 @@ const onClosed = () => {
 </script>
 
 <template>
-  <div class="mobile-wrap">
+  <div class="mobile-wrap" ref="el">
     <div @click="onClick" @closed="onClosed">
       <TalentItem :id />
     </div>
