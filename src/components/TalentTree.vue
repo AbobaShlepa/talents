@@ -22,9 +22,9 @@ const getTalents = (row: number) => {
 }
 const talentIds = talents.map(x => x.id);
 
-onMounted(() => {
-  drawLines(talentIds);
-});
+// onMounted(() => {
+//   drawLines(talentIds);
+// });
 
 </script>
 
