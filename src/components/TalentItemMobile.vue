@@ -32,7 +32,7 @@ const onClosed = () => {
     <div @click="onClick" @closed="onClosed">
       <TalentItem :id />
     </div>
-    <TalentTooltip :id v-if="shown" :on-close="onClosed" />
+    <TalentTooltip :id v-if="shown" :on-close="onClosed" :on-decrease="decreasePoints" />
   </div>
 </template>
 

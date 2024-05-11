@@ -3,7 +3,11 @@ import useTalentStore from '@/state/TalentsStore';
 import { ref } from 'vue';
 import TalentRequires from './TalentRequires.vue';
 
-const { id, onClose } = defineProps<{ id: number, onClose: () => void | null }>();
+const { id, onClose } = defineProps<{ 
+  id: number,
+  onClose: (() => void) | null,
+  onDecrease: (() => void) | null,
+}>();
 
 const { getById } = useTalentStore();
 const talent = ref(getById(id));
@@ -43,6 +47,9 @@ const formatString = (template: string, ...args: any[]) => {
     <button v-if="onClose" class="close-button" type="button" @click="onClose">
       x
     </button>
+    <button v-if="onDecrease" class="decrease-button"  type="button"  @click="onDecrease">
+      -
+    </button>
   </div>
 </template>
 
@@ -68,8 +75,8 @@ const formatString = (template: string, ...args: any[]) => {
 
 @media (pointer: coarse) {
   .main {
-    top: 30%;
-    left: 20%;
+    top: 40%;
+    left: 0%;
   }
 }
 
@@ -84,5 +91,15 @@ const formatString = (template: string, ...args: any[]) => {
 
 .close-button {
   color: red;
+  position: absolute;
+  left: 90%;
+  top: 10%;
+}
+
+.decrease-button {
+  color: red;
+  position: absolute;
+  left: 80%;
+  top: 10%;
 }
 </style>
