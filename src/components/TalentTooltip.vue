@@ -3,9 +3,8 @@ import useTalentStore from '@/state/TalentsStore';
 import { ref } from 'vue';
 import TalentRequires from './TalentRequires.vue';
 
-const { id, onClose } = defineProps<{ 
+const { id, onClose } = defineProps<{
   id: number,
-  onClose: (() => void) | null,
   onDecrease: (() => void) | null,
 }>();
 
@@ -44,10 +43,7 @@ const formatString = (template: string, ...args: any[]) => {
         {{ getDescription(talent.pointsCurrent + 1) }}
       </div>
     </div>
-    <button v-if="onClose" class="close-button" type="button" @click="onClose">
-      x
-    </button>
-    <button v-if="onDecrease" class="decrease-button"  type="button"  @click="onDecrease">
+    <button v-if="onDecrease" class="decrease-button" type="button" @click="onDecrease">
       -
     </button>
   </div>
