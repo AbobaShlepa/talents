@@ -21,19 +21,19 @@ const { treeIds } = defineProps<{
   align-items: center;
   height: 100vh;
   justify-content: center;
-  overflow: hidden;
 }
 
 @media (pointer: coarse) {
   .tree-container {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
     display: block;
+    height: auto;
   }
 }
 
 .background {
+  background-size: cover;
   background-image: url('https://r4.wallpaperflare.com/wallpaper/260/652/937/world-of-warcraft-rogue-wallpaper-92d152f0bda6ae6baab8b295f0e82902.jpg');
 }
 </style>
