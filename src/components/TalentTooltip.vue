@@ -95,7 +95,7 @@ const formatString = (template: string, ...args: any[]) => {
 .decrease-button {
   color: red;
   position: absolute;
-  left: 80%;
+  left: 90%;
   top: 10%;
 }
 </style>
