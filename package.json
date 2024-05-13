@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
-    "arrow-line": "^0.7.5",
     "linq": "^4.0.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.21"

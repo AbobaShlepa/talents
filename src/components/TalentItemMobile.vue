@@ -39,5 +39,7 @@ const onClosed = () => {
 <style scoped>
 .desktop-wrap {
   position: relative;
+  width: 54px;
+  height: 54px;
 }
 </style>

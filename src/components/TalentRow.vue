@@ -35,7 +35,7 @@ export interface ITalentInfo {
 }
 
 .empty {
-  width: 52.3px;
-  height: 52.3px;
+  width: 54px;
+  height: 54px;
 }
 </style>

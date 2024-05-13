@@ -31,5 +31,5 @@ export function useTalent(id: number) {
     }
   }
 
-  return { talent, talentActive, increasePoints, decreasePoints };
+  return { talent, talentActive, increasePoints, decreasePoints, getChild: talentStore.getChild };
 }

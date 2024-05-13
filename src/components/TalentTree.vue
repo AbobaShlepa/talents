@@ -1,7 +1,6 @@
 <script setup lang='ts'>
 import TalentRow, { type ITalentInfo } from './TalentRow.vue';
-import { onMounted, provide } from 'vue';
-import drawLines from '@/helpers/arrow';
+import { provide } from 'vue';
 import useTalentStore from '@/state/TalentsStore';
 import Enumerable from 'linq';
 
@@ -20,11 +19,6 @@ const talentTree = talentStore.getTalentTree(id);
 const getTalents = (row: number) => {
   return talentRowsGrouped.get(row).select<ITalentInfo>(x => ({ id: x.id, position: x.position })).toArray();
 }
-const talentIds = talents.map(x => x.id);
-
-// onMounted(() => {
-//   drawLines(talentIds);
-// });
 
 </script>
 

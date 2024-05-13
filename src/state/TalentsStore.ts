@@ -43,6 +43,12 @@ const useTalentStore = defineStore('talents', () => {
       });
   }
 
+  const getChild = (id: number) => {
+    const talent = talents.value.find(x => x.id === id)!;
+
+    return talents.value.find(x => x.parentTalentName === talent.name);
+  }
+
   return {
     talents,
     talentTrees,
@@ -54,7 +60,8 @@ const useTalentStore = defineStore('talents', () => {
     canDecrease,
     getPointsInTree,
     getTalentTree,
-    enoughPoints
+    enoughPoints,
+    getChild
   };
 });
 
