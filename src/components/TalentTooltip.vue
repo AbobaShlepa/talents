@@ -3,7 +3,7 @@ import useTalentStore from '@/state/TalentsStore';
 import { ref } from 'vue';
 import TalentRequires from './TalentRequires.vue';
 
-const { id, onClose } = defineProps<{
+const { id } = defineProps<{
   id: number,
   onDecrease: (() => void) | null,
 }>();
